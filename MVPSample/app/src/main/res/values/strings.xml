@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MVPSample</string>
+    <string name="text_input_hint">テキストを入力</string>
+    <string name="set_text">Set Text</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
