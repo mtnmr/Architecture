@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.example.mvpsample.presenter.MainContract
 import com.example.mvpsample.presenter.MainPresenter
+import com.example.mvpsample.repository.PreferenceManager
 import com.google.android.material.textfield.TextInputEditText
 
 class MainFragment : Fragment(), MainContract.View {
@@ -33,7 +34,7 @@ class MainFragment : Fragment(), MainContract.View {
         button = view.findViewById(R.id.set_text_button)
         textView = view.findViewById(R.id.current_text)
 
-        presenter = MainPresenter(this)
+        presenter = MainPresenter(this, PreferenceManager(requireContext()))
         presenter.start()
 
         button.setOnClickListener {
