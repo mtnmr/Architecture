@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:hint="@string/text_input_hint">
+            android:hint="@string/poke_hint">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text"
@@ -35,14 +35,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="current text"/>
+            android:text="@string/current_number"/>
 
         <TextView
             android:id="@+id/current_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            tools:text="sample text"/>
+            tools:text="sample number"/>
+
+        <TextView
+            android:id="@+id/poke_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_margin="16dp"
+            tools:text="pokemon name"/>
+
+        <ImageView
+            android:id="@+id/poke_image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"/>
     </LinearLayout>
 
 

@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
+import coil.load
 import com.example.mvpsample.presenter.MainContract
 import com.example.mvpsample.presenter.MainPresenter
-import com.example.mvpsample.repository.PreferenceManager
+import com.example.mvpsample.repository.local.PreferenceManager
+import com.example.mvpsample.repository.remote.ApiClientManager
 import com.google.android.material.textfield.TextInputEditText
 
 class MainFragment : Fragment(), MainContract.View {
@@ -18,6 +22,9 @@ class MainFragment : Fragment(), MainContract.View {
     lateinit var editText :TextInputEditText
     lateinit var button : Button
     lateinit var textView : TextView
+
+    lateinit var pokeName: TextView
+    lateinit var pokeImage: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +40,10 @@ class MainFragment : Fragment(), MainContract.View {
         editText = view.findViewById(R.id.edit_text)
         button = view.findViewById(R.id.set_text_button)
         textView = view.findViewById(R.id.current_text)
+        pokeName = view.findViewById(R.id.poke_name)
+        pokeImage = view.findViewById(R.id.poke_image)
 
-        presenter = MainPresenter(this, PreferenceManager(requireContext()))
+        presenter = MainPresenter(this, PreferenceManager(requireContext()), ApiClientManager())
         presenter.start()
 
         button.setOnClickListener {
@@ -42,7 +51,17 @@ class MainFragment : Fragment(), MainContract.View {
         }
     }
 
-    override fun showTextView(text: String) {
-        textView.text = text
+
+    override fun showNumber(id: String) {
+        textView.text = id
+    }
+
+    override fun showPokeName(name: String) {
+        pokeName.text = name
+    }
+
+    override fun showPokeImage(imageUrl: String) {
+        val imgURL = imageUrl.toUri().buildUpon().scheme("https").build()
+        pokeImage.load(imgURL)
     }
 }

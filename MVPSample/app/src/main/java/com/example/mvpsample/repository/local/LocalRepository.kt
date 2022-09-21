@@ -1,4 +1,4 @@
-package com.example.mvpsample.repository
+package com.example.mvpsample.repository.local
 
 interface LocalRepository {
 

@@ -1,6 +1,7 @@
-package com.example.mvpsample.repository
+package com.example.mvpsample.repository.local
 
 import android.content.Context
+import com.example.mvpsample.repository.local.LocalRepository
 
 const val SAVE_TEXT_KEY = "current text"
 
