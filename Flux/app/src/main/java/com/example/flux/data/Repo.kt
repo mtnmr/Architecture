@@ -1,4 +1,4 @@
-package com.example.flux.api
+package com.example.flux.data
 
 import com.squareup.moshi.Json
 
