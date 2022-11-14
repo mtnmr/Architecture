@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
@@ -26,6 +27,7 @@ object ApiModule {
     @Provides
     @Singleton
     fun provideRetrofit(moshi:Moshi): Retrofit = Retrofit.Builder()
+        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .baseUrl(GITHUB_BASE_URL)
         .build()
